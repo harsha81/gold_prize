@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Price</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Template.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="gold-price-container">
+            <h1>Gold Price Checker</h1>
+            <div class="gold-price">
+                <h2>Enter City to Check Gold Price</h2>
+                <form method="post">
+                    <input type="text" name="city" placeholder="Enter city name" required>
+                    <button type="submit">Check Price</button>
+                </form>
+                {% if gold_price %}
+                    <h2>Gold Price in {{ city }}: {{ gold_price }}</h2>
+                {% elif error %}
+                    <p>{{ error }}</p>
+                {% endif %}
+            </div>
+            <div class="gold-price-chart">
+                <!-- Chart or additional content can be added here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Gold Price Website</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
